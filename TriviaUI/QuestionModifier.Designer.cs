@@ -146,7 +146,7 @@ namespace TriviaUI
             // solutionTextBox
             // 
             this.solutionTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.solutionTextBox.Location = new System.Drawing.Point(150, 183);
+            this.solutionTextBox.Location = new System.Drawing.Point(150, 187);
             this.solutionTextBox.Name = "solutionTextBox";
             this.solutionTextBox.Size = new System.Drawing.Size(322, 29);
             this.solutionTextBox.TabIndex = 12;
