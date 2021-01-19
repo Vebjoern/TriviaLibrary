@@ -10,7 +10,6 @@ namespace TriviaLibrary
     {
         public List<QuestionModel> QuestionList { get; set; } = new List<QuestionModel>();
         public string TriviaName { get; set; }
-        public string Description { get; set; }
 
     }
 }

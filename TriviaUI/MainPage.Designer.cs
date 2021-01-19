@@ -77,6 +77,7 @@ namespace TriviaUI
             this.AddNewTriviaButton.TabIndex = 4;
             this.AddNewTriviaButton.Text = "Add new trivia...";
             this.AddNewTriviaButton.UseVisualStyleBackColor = true;
+            this.AddNewTriviaButton.Click += new System.EventHandler(this.AddNewTriviaButton_Click);
             // 
             // EditTriviaButton
             // 

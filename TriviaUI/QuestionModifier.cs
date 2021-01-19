@@ -17,5 +17,13 @@ namespace TriviaUI
             InitializeComponent();
         }
 
+        public bool ValidateForm()
+        {
+            // TODO - Implement form validation (Strings not empty, ensure solution is identical to _one_ alternative - or make solution a dropdown menu char A-D)
+            return true;
+        }
+
     }
+
+    
 }

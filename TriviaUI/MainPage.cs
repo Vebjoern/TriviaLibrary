@@ -8,23 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TriviaLibrary;
-//using LiteDB;
 
 namespace TriviaUI
 {
     public partial class MainPage : Form
     {
-        BindingList<TriviaModel> TriviaList;
         public MainPage()
         {
-            //using (var db = new LiteDatabase(@".\TriviaCollections.db"))
+            SQLiteController.EnsureDbExists();
 
             // Populate the TriviaList from DB
             InitializeComponent();
 
-            TriviaListBox.DataSource = TriviaList;
-            TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
+            //TriviaListBox.DataSource = TriviaList;
+            //TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
         }
 
+        private void AddNewTriviaButton_Click(object sender, EventArgs e)
+        {
+            SQLiteController.CreateNewTrivia("Geography");
+            // TODO - Implement user input for name
+
+
+
+        }
     }
 }
