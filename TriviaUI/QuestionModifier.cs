@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TriviaLibrary;
 
 namespace TriviaUI
 {
@@ -23,6 +24,18 @@ namespace TriviaUI
             return true;
         }
 
+        private void confirmationButton_Click(object sender, EventArgs e)
+        {
+
+            if (ValidateForm())
+            {
+                string collectionName = "Geography";
+                QuestionModel question = new QuestionModel(questionTextBox.Text, alternativeATextBox.Text, alternativeBTextBox.Text, alternativeCTextBox.Text, alternativeDTextBox.Text, 'A');
+
+                SQLiteController.AddQuestion(collectionName, question);
+            }
+
+        }
     }
 
     

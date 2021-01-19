@@ -41,6 +41,7 @@ namespace TriviaUI
             this.alternativeCTextBox = new System.Windows.Forms.TextBox();
             this.alternativeDTextBox = new System.Windows.Forms.TextBox();
             this.solutionTextBox = new System.Windows.Forms.TextBox();
+            this.confirmationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // questionHeader
@@ -151,11 +152,23 @@ namespace TriviaUI
             this.solutionTextBox.Size = new System.Drawing.Size(322, 29);
             this.solutionTextBox.TabIndex = 12;
             // 
+            // confirmationButton
+            // 
+            this.confirmationButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmationButton.Location = new System.Drawing.Point(150, 273);
+            this.confirmationButton.Name = "confirmationButton";
+            this.confirmationButton.Size = new System.Drawing.Size(98, 33);
+            this.confirmationButton.TabIndex = 13;
+            this.confirmationButton.Text = "Confirm";
+            this.confirmationButton.UseVisualStyleBackColor = true;
+            this.confirmationButton.Click += new System.EventHandler(this.confirmationButton_Click);
+            // 
             // QuestionModifier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.confirmationButton);
             this.Controls.Add(this.solutionTextBox);
             this.Controls.Add(this.alternativeDTextBox);
             this.Controls.Add(this.alternativeCTextBox);
@@ -189,5 +202,6 @@ namespace TriviaUI
         private System.Windows.Forms.TextBox alternativeCTextBox;
         private System.Windows.Forms.TextBox alternativeDTextBox;
         private System.Windows.Forms.TextBox solutionTextBox;
+        private System.Windows.Forms.Button confirmationButton;
     }
 }

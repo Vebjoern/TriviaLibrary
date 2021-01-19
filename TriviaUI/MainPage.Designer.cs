@@ -29,24 +29,14 @@ namespace TriviaUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.Header1 = new System.Windows.Forms.Label();
             this.TriviaListBox = new System.Windows.Forms.ListBox();
             this.ImportNewTriviaButton = new System.Windows.Forms.Button();
-            this.AddNewTriviaButton = new System.Windows.Forms.Button();
+            this.addNewTriviaButton = new System.Windows.Forms.Button();
             this.EditTriviaButton = new System.Windows.Forms.Button();
             this.ExportTriviaButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.addNewTriviaTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // Header1
-            // 
-            this.Header1.AutoSize = true;
-            this.Header1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Header1.Location = new System.Drawing.Point(12, 9);
-            this.Header1.Name = "Header1";
-            this.Header1.Size = new System.Drawing.Size(128, 30);
-            this.Header1.TabIndex = 0;
-            this.Header1.Text = "Trivia Library";
             // 
             // TriviaListBox
             // 
@@ -61,23 +51,23 @@ namespace TriviaUI
             // ImportNewTriviaButton
             // 
             this.ImportNewTriviaButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportNewTriviaButton.Location = new System.Drawing.Point(15, 350);
+            this.ImportNewTriviaButton.Location = new System.Drawing.Point(12, 31);
             this.ImportNewTriviaButton.Name = "ImportNewTriviaButton";
             this.ImportNewTriviaButton.Size = new System.Drawing.Size(164, 33);
             this.ImportNewTriviaButton.TabIndex = 2;
             this.ImportNewTriviaButton.Text = "Import new trivia...";
             this.ImportNewTriviaButton.UseVisualStyleBackColor = true;
             // 
-            // AddNewTriviaButton
+            // addNewTriviaButton
             // 
-            this.AddNewTriviaButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewTriviaButton.Location = new System.Drawing.Point(15, 311);
-            this.AddNewTriviaButton.Name = "AddNewTriviaButton";
-            this.AddNewTriviaButton.Size = new System.Drawing.Size(164, 33);
-            this.AddNewTriviaButton.TabIndex = 4;
-            this.AddNewTriviaButton.Text = "Add new trivia...";
-            this.AddNewTriviaButton.UseVisualStyleBackColor = true;
-            this.AddNewTriviaButton.Click += new System.EventHandler(this.AddNewTriviaButton_Click);
+            this.addNewTriviaButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewTriviaButton.Location = new System.Drawing.Point(271, 386);
+            this.addNewTriviaButton.Name = "addNewTriviaButton";
+            this.addNewTriviaButton.Size = new System.Drawing.Size(164, 33);
+            this.addNewTriviaButton.TabIndex = 4;
+            this.addNewTriviaButton.Text = "Add new trivia";
+            this.addNewTriviaButton.UseVisualStyleBackColor = true;
+            this.addNewTriviaButton.Click += new System.EventHandler(this.addNewTriviaButton_Click);
             // 
             // EditTriviaButton
             // 
@@ -109,34 +99,41 @@ namespace TriviaUI
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
+            // addNewTriviaTextbox
+            // 
+            this.addNewTriviaTextbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewTriviaTextbox.Location = new System.Drawing.Point(12, 389);
+            this.addNewTriviaTextbox.Name = "addNewTriviaTextbox";
+            this.addNewTriviaTextbox.Size = new System.Drawing.Size(253, 29);
+            this.addNewTriviaTextbox.TabIndex = 8;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.addNewTriviaTextbox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.ExportTriviaButton);
             this.Controls.Add(this.EditTriviaButton);
-            this.Controls.Add(this.AddNewTriviaButton);
+            this.Controls.Add(this.addNewTriviaButton);
             this.Controls.Add(this.ImportNewTriviaButton);
             this.Controls.Add(this.TriviaListBox);
-            this.Controls.Add(this.Header1);
             this.Name = "MainPage";
-            this.Text = "Overview";
+            this.Text = "Trivia Library";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label Header1;
         private System.Windows.Forms.ListBox TriviaListBox;
         private System.Windows.Forms.Button ImportNewTriviaButton;
-        private System.Windows.Forms.Button AddNewTriviaButton;
+        private System.Windows.Forms.Button addNewTriviaButton;
         private System.Windows.Forms.Button EditTriviaButton;
         private System.Windows.Forms.Button ExportTriviaButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.TextBox addNewTriviaTextbox;
     }
 }
 

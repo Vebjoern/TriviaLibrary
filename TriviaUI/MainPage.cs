@@ -24,13 +24,18 @@ namespace TriviaUI
             //TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
         }
 
-        private void AddNewTriviaButton_Click(object sender, EventArgs e)
+        private void addNewTriviaButton_Click(object sender, EventArgs e)
         {
-            SQLiteController.CreateNewTrivia("Geography");
+            string collectionName = addNewTriviaTextbox.Text;
+            SQLiteController.CreateNewTrivia(collectionName);
             // TODO - Implement user input for name
 
+        }
 
-
+        private bool ValidateNewTriviaForm(string input)
+        {
+            //TODO - Add validation
+            return true;
         }
     }
 }
