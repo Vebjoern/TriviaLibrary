@@ -15,5 +15,6 @@ namespace TriviaLibrary
         {
             this.TriviaName = name;
         }
+
     }
 }

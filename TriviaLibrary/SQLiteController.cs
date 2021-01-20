@@ -92,8 +92,20 @@ namespace TriviaLibrary
 
             return TriviaList;
          }
-        public static void DeleteTrivia(string collectionName)
+        public static void DeleteTrivia(string name)
         {
+            string deleteTriviaQuery = "DELETE FROM Trivias WHERE NAME = @name";
+
+            using (var con = new SQLiteConnection(dbCon))
+            {
+                using (var command = new SQLiteCommand(deleteTriviaQuery, con))
+                {
+                    con.Open();
+
+                    command.Parameters.AddWithValue("name", name);
+                    command.ExecuteNonQuery();
+                }
+            }
 
         }
 

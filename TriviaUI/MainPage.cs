@@ -25,6 +25,7 @@ namespace TriviaUI
 
             TriviaListBox.DataSource = Trivias;
             TriviaListBox.DisplayMember = "TriviaName";
+
         }
 
         private void addNewTriviaButton_Click(object sender, EventArgs e)
@@ -43,6 +44,19 @@ namespace TriviaUI
         {
             //TODO - Add validation
             return true;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            dynamic deleteMe = TriviaListBox.SelectedItem;
+            string triviaName = deleteMe.TriviaName;
+            SQLiteController.DeleteTrivia(triviaName);
+            // TODO - Implement multi-selection for deletion, better solution for getting triviaName?
+
+            Trivias = SQLiteController.GetTrivias();
+            TriviaListBox.DataSource = null;
+            TriviaListBox.DataSource = Trivias;
+            TriviaListBox.DisplayMember = "TriviaName";
         }
     }
 }
