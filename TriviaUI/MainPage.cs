@@ -24,7 +24,7 @@ namespace TriviaUI
             InitializeComponent();
 
             TriviaListBox.DataSource = Trivias;
-            TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
+            TriviaListBox.DisplayMember = "TriviaName";
         }
 
         private void addNewTriviaButton_Click(object sender, EventArgs e)
@@ -32,7 +32,11 @@ namespace TriviaUI
             string collectionName = addNewTriviaTextbox.Text;
             SQLiteController.CreateNewTrivia(collectionName);
 
-
+            Trivias = SQLiteController.GetTrivias();
+            TriviaListBox.DataSource = null;
+            TriviaListBox.DataSource = Trivias;
+            TriviaListBox.DisplayMember = "TriviaName";
+            //TODO - find a proper solution for refreshing the listbox
         }
 
         private bool ValidateNewTriviaForm(string input)

@@ -92,7 +92,10 @@ namespace TriviaLibrary
 
             return TriviaList;
          }
+        public static void DeleteTrivia(string collectionName)
+        {
 
+        }
 
         public static void ImportNewTriviaFromFile()
         {
@@ -104,10 +107,7 @@ namespace TriviaLibrary
 
         }
 
-        public static void DeleteTrivia(string collectionName)
-        {
-
-        }
+       
 
         public static void AddQuestion(string collectionName, QuestionModel question)
         {
