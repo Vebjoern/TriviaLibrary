@@ -33,7 +33,7 @@ namespace TriviaLibrary
             {
                 using (var command = new SQLiteCommand(connection))
                 {
-                    if(!System.IO.File.Exists("TriviaLib.db"))
+                    if (!System.IO.File.Exists("TriviaLib.db"))
                     {
                         SQLiteConnection.CreateFile("TriviaLib.db");
                     }
@@ -51,7 +51,7 @@ namespace TriviaLibrary
         }
         public static void CreateNewTrivia(string collectionName)
         {
-            using(var con = new SQLiteConnection(dbCon))
+            using (var con = new SQLiteConnection(dbCon))
             {
                 using (var command = new SQLiteCommand(con))
                 {
@@ -66,6 +66,33 @@ namespace TriviaLibrary
                 }
             }
         }
+
+        public static List<TriviaModel> GetTrivias()
+        {
+
+            List<TriviaModel> TriviaList = new List<TriviaModel>();
+
+            string getTriviasQuery = "SELECT NAME from Trivias";
+
+            using (var con = new SQLiteConnection(dbCon))
+            {
+                using (var command = new SQLiteCommand(getTriviasQuery, con))
+                {
+                    con.Open();
+
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        TriviaList.Add(new TriviaModel(reader.GetString(0)));
+                    }
+                        
+
+                }
+            }
+
+            return TriviaList;
+         }
+
 
         public static void ImportNewTriviaFromFile()
         {

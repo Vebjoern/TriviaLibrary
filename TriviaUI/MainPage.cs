@@ -13,22 +13,25 @@ namespace TriviaUI
 {
     public partial class MainPage : Form
     {
+        private List<TriviaModel> Trivias = new List<TriviaModel>();
+        //private List<QuestionModel> Questions = new List<QuestionModel>();
+
         public MainPage()
         {
             SQLiteController.EnsureDbExists();
+            Trivias = SQLiteController.GetTrivias();
 
-            // Populate the TriviaList from DB
             InitializeComponent();
 
-            //TriviaListBox.DataSource = TriviaList;
-            //TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
+            TriviaListBox.DataSource = Trivias;
+            TriviaListBox.DisplayMember = nameof(TriviaModel.TriviaName);
         }
 
         private void addNewTriviaButton_Click(object sender, EventArgs e)
         {
             string collectionName = addNewTriviaTextbox.Text;
             SQLiteController.CreateNewTrivia(collectionName);
-            // TODO - Implement user input for name
+
 
         }
 
