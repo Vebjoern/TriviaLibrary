@@ -13,8 +13,7 @@ namespace TriviaUI
 {
     public partial class MainPage : Form
     {
-        private List<TriviaModel> Trivias = new List<TriviaModel>();
-        //private List<QuestionModel> Questions = new List<QuestionModel>();
+        private List<TriviaModel> Trivias;
 
         public MainPage()
         {
@@ -27,7 +26,7 @@ namespace TriviaUI
             TriviaListBox.DisplayMember = "TriviaName";
         }
 
-        private void addNewTriviaButton_Click(object sender, EventArgs e)
+        private void AddNewTriviaButton_Click(object sender, EventArgs e)
         {
             string collectionName = addNewTriviaTextbox.Text;
             SQLiteController.CreateNewTrivia(collectionName);
@@ -45,7 +44,7 @@ namespace TriviaUI
             return true;
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             dynamic deleteMe = TriviaListBox.SelectedItem;
             string triviaName = deleteMe.TriviaName;

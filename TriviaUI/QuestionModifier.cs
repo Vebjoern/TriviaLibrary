@@ -29,7 +29,7 @@ namespace TriviaUI
             return true;
         }
 
-        private void confirmationButton_Click(object sender, EventArgs e)
+        private void ConfirmationButton_Click(object sender, EventArgs e)
         {
 
             if (ValidateForm())

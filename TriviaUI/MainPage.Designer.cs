@@ -67,7 +67,7 @@ namespace TriviaUI
             this.addNewTriviaButton.TabIndex = 4;
             this.addNewTriviaButton.Text = "Add new trivia";
             this.addNewTriviaButton.UseVisualStyleBackColor = true;
-            this.addNewTriviaButton.Click += new System.EventHandler(this.addNewTriviaButton_Click);
+            this.addNewTriviaButton.Click += new System.EventHandler(this.AddNewTriviaButton_Click);
             // 
             // EditTriviaButton
             // 
@@ -99,7 +99,7 @@ namespace TriviaUI
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // addNewTriviaTextbox
             // 

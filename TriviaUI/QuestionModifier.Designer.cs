@@ -153,7 +153,7 @@ namespace TriviaUI
             this.confirmationButton.TabIndex = 13;
             this.confirmationButton.Text = "Confirm";
             this.confirmationButton.UseVisualStyleBackColor = true;
-            this.confirmationButton.Click += new System.EventHandler(this.confirmationButton_Click);
+            this.confirmationButton.Click += new System.EventHandler(this.ConfirmationButton_Click);
             // 
             // solutionComboBox
             // 

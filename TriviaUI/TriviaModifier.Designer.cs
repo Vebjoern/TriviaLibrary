@@ -58,7 +58,7 @@ namespace TriviaUI
             this.addNewQuestionButton.TabIndex = 6;
             this.addNewQuestionButton.Text = "Add new";
             this.addNewQuestionButton.UseVisualStyleBackColor = true;
-            this.addNewQuestionButton.Click += new System.EventHandler(this.addNewQuestionButton_Click);
+            this.addNewQuestionButton.Click += new System.EventHandler(this.AddNewQuestionButton_Click);
             // 
             // editQuestionButton
             // 

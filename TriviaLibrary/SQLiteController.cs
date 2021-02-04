@@ -51,6 +51,32 @@ namespace TriviaLibrary
                 }
             }
         }
+
+        public static List<QuestionModel> GetQuestionsFromTrivia(int triviaId)
+        {
+            string fetchQuestionsFromTrivia = "SELECT Question, AlternativeA, AlternativeB, AlternativeC, AlternativeD, Solution" +
+                " FROM Questions WHERE Category = @TriviaId";
+            List<QuestionModel> QuestionList = new List<QuestionModel>();
+
+            using (var connection = new SQLiteConnection(dbCon))
+            {
+                using (var command = new SQLiteCommand(connection))
+                {
+                    connection.Open();
+                    command.CommandText = fetchQuestionsFromTrivia;
+                    command.Parameters.AddWithValue("TriviaId", triviaId);
+
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        QuestionList.Add(new QuestionModel(reader.GetString(0), reader.GetString(1), reader.GetString(2), 
+                            reader.GetString(3), reader.GetString(4), reader.GetString(5)));
+                    }
+                    return QuestionList;
+                }
+            }
+        }
+
         public static void CreateNewTrivia(string collectionName)
         {
             using (var con = new SQLiteConnection(dbCon))
@@ -62,7 +88,7 @@ namespace TriviaLibrary
                     con.Open();
 
                     command.CommandText = insertTriviaQuery;
-                    command.Parameters.AddWithValue("NAME", collectionName);
+                    command.Parameters.AddWithValue("name", collectionName);
                     command.ExecuteNonQuery();
                     // TODO - Add exception handling (e.g. for non-unique name)
                 }
