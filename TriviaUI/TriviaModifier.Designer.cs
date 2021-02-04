@@ -29,11 +29,14 @@ namespace TriviaUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.questionListBox = new System.Windows.Forms.ListBox();
             this.addNewQuestionButton = new System.Windows.Forms.Button();
             this.editQuestionButton = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
             this.triviaNameLabel = new System.Windows.Forms.Label();
+            this.triviaModifierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.triviaModifierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // questionListBox
@@ -55,6 +58,7 @@ namespace TriviaUI
             this.addNewQuestionButton.TabIndex = 6;
             this.addNewQuestionButton.Text = "Add new";
             this.addNewQuestionButton.UseVisualStyleBackColor = true;
+            this.addNewQuestionButton.Click += new System.EventHandler(this.addNewQuestionButton_Click);
             // 
             // editQuestionButton
             // 
@@ -79,12 +83,16 @@ namespace TriviaUI
             // triviaNameLabel
             // 
             this.triviaNameLabel.AutoSize = true;
+            this.triviaNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.triviaModifierBindingSource, "TriviaName", true));
             this.triviaNameLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.triviaNameLabel.Location = new System.Drawing.Point(13, 13);
             this.triviaNameLabel.Name = "triviaNameLabel";
-            this.triviaNameLabel.Size = new System.Drawing.Size(68, 30);
+            this.triviaNameLabel.Size = new System.Drawing.Size(0, 30);
             this.triviaNameLabel.TabIndex = 9;
-            this.triviaNameLabel.Text = "label1";
+            // 
+            // triviaModifierBindingSource
+            // 
+            this.triviaModifierBindingSource.DataSource = typeof(TriviaUI.TriviaModifier);
             // 
             // TriviaModifier
             // 
@@ -98,6 +106,7 @@ namespace TriviaUI
             this.Controls.Add(this.questionListBox);
             this.Name = "TriviaModifier";
             this.Text = "Edit trivia";
+            ((System.ComponentModel.ISupportInitialize)(this.triviaModifierBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +119,6 @@ namespace TriviaUI
         private System.Windows.Forms.Button editQuestionButton;
         private System.Windows.Forms.Button deleteQuestionButton;
         private System.Windows.Forms.Label triviaNameLabel;
+        private System.Windows.Forms.BindingSource triviaModifierBindingSource;
     }
 }

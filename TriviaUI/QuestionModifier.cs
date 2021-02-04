@@ -13,14 +13,19 @@ namespace TriviaUI
 {
     public partial class QuestionModifier : Form
     {
-        public QuestionModifier()
+        public string TriviaName { get; set; }
+        readonly char[] solutionList = { 'A', 'B', 'C', 'D' };
+        
+
+        public QuestionModifier(string collectionName)
         {
+            TriviaName = collectionName;
             InitializeComponent();
         }
 
         public bool ValidateForm()
         {
-            // TODO - Implement form validation (Strings not empty, ensure solution is identical to _one_ alternative - or make solution a dropdown menu char A-D)
+            // TODO - Implement form validation (Strings not empty, no alternatives identical)
             return true;
         }
 
@@ -29,10 +34,9 @@ namespace TriviaUI
 
             if (ValidateForm())
             {
-                string collectionName = "Geography";
-                QuestionModel question = new QuestionModel(questionTextBox.Text, alternativeATextBox.Text, alternativeBTextBox.Text, alternativeCTextBox.Text, alternativeDTextBox.Text, 'A');
+                QuestionModel question = new QuestionModel(questionTextBox.Text, alternativeATextBox.Text, alternativeBTextBox.Text, alternativeCTextBox.Text, alternativeDTextBox.Text, solutionComboBox.Text);
 
-                SQLiteController.AddQuestion(collectionName, question);
+                SQLiteController.AddQuestion(TriviaName, question);
             }
 
         }

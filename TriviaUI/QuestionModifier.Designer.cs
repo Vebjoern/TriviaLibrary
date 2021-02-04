@@ -40,8 +40,8 @@ namespace TriviaUI
             this.alternativeBTextBox = new System.Windows.Forms.TextBox();
             this.alternativeCTextBox = new System.Windows.Forms.TextBox();
             this.alternativeDTextBox = new System.Windows.Forms.TextBox();
-            this.solutionTextBox = new System.Windows.Forms.TextBox();
             this.confirmationButton = new System.Windows.Forms.Button();
+            this.solutionComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // questionHeader
@@ -98,7 +98,7 @@ namespace TriviaUI
             // 
             this.solutionLabel.AutoSize = true;
             this.solutionLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.solutionLabel.Location = new System.Drawing.Point(12, 183);
+            this.solutionLabel.Location = new System.Drawing.Point(12, 191);
             this.solutionLabel.Name = "solutionLabel";
             this.solutionLabel.Size = new System.Drawing.Size(89, 30);
             this.solutionLabel.TabIndex = 6;
@@ -144,18 +144,10 @@ namespace TriviaUI
             this.alternativeDTextBox.Size = new System.Drawing.Size(322, 29);
             this.alternativeDTextBox.TabIndex = 11;
             // 
-            // solutionTextBox
-            // 
-            this.solutionTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.solutionTextBox.Location = new System.Drawing.Point(150, 187);
-            this.solutionTextBox.Name = "solutionTextBox";
-            this.solutionTextBox.Size = new System.Drawing.Size(322, 29);
-            this.solutionTextBox.TabIndex = 12;
-            // 
             // confirmationButton
             // 
             this.confirmationButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmationButton.Location = new System.Drawing.Point(150, 273);
+            this.confirmationButton.Location = new System.Drawing.Point(150, 361);
             this.confirmationButton.Name = "confirmationButton";
             this.confirmationButton.Size = new System.Drawing.Size(98, 33);
             this.confirmationButton.TabIndex = 13;
@@ -163,13 +155,24 @@ namespace TriviaUI
             this.confirmationButton.UseVisualStyleBackColor = true;
             this.confirmationButton.Click += new System.EventHandler(this.confirmationButton_Click);
             // 
+            // solutionComboBox
+            // 
+            this.solutionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.solutionComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.solutionComboBox.FormattingEnabled = true;
+            this.solutionComboBox.Location = new System.Drawing.Point(150, 191);
+            this.solutionComboBox.Name = "solutionComboBox";
+            this.solutionComboBox.Size = new System.Drawing.Size(37, 29);
+            this.solutionComboBox.TabIndex = 14;
+            this.solutionComboBox.DataSource = solutionList;
+            // 
             // QuestionModifier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.solutionComboBox);
             this.Controls.Add(this.confirmationButton);
-            this.Controls.Add(this.solutionTextBox);
             this.Controls.Add(this.alternativeDTextBox);
             this.Controls.Add(this.alternativeCTextBox);
             this.Controls.Add(this.alternativeBTextBox);
@@ -201,7 +204,7 @@ namespace TriviaUI
         private System.Windows.Forms.TextBox alternativeBTextBox;
         private System.Windows.Forms.TextBox alternativeCTextBox;
         private System.Windows.Forms.TextBox alternativeDTextBox;
-        private System.Windows.Forms.TextBox solutionTextBox;
         private System.Windows.Forms.Button confirmationButton;
+        private System.Windows.Forms.ComboBox solutionComboBox;
     }
 }

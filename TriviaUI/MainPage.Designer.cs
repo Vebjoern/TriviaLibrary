@@ -78,6 +78,7 @@ namespace TriviaUI
             this.EditTriviaButton.TabIndex = 5;
             this.EditTriviaButton.Text = "Edit";
             this.EditTriviaButton.UseVisualStyleBackColor = true;
+            this.EditTriviaButton.Click += new System.EventHandler(this.EditTriviaButton_Click);
             // 
             // ExportTriviaButton
             // 

@@ -25,7 +25,6 @@ namespace TriviaUI
 
             TriviaListBox.DataSource = Trivias;
             TriviaListBox.DisplayMember = "TriviaName";
-
         }
 
         private void addNewTriviaButton_Click(object sender, EventArgs e)
@@ -57,6 +56,15 @@ namespace TriviaUI
             TriviaListBox.DataSource = null;
             TriviaListBox.DataSource = Trivias;
             TriviaListBox.DisplayMember = "TriviaName";
+        }
+
+        private void EditTriviaButton_Click(object sender, EventArgs e)
+        {
+            dynamic editMe = TriviaListBox.SelectedItem;
+            string triviaName = editMe.TriviaName;
+
+            TriviaModifier editTrivia = new TriviaModifier(triviaName);
+            editTrivia.Show();
         }
     }
 }

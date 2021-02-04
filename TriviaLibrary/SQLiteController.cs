@@ -15,18 +15,20 @@ namespace TriviaLibrary
         public static void EnsureDbExists()
         {
             string createTriviaTableQuery = @"CREATE TABLE IF NOT EXISTS Trivias (" +
-                                        "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                                        "NAME VARCHAR(100) NOT NULL UNIQUE" +
+                                        "TriviaId integer PRIMARY KEY AUTOINCREMENT," +
+                                        "TriviaName varchar(100) NOT NULL UNIQUE" +
                                         ")";
 
             string createQuestionTableQuery = @"CREATE TABLE IF NOT EXISTS Questions (" +
-                                        "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                                        "QUESTION VARCHAR(512) NOT NULL UNIQUE," +
-                                        "ALTERNATIVEA VARCHAR(128) NOT NULL," +
-                                        "ALTERNATIVEB VARCHAR(128) NOT NULL," +
-                                        "ALTERNATIVEC VARCHAR(128) NOT NULL," +
-                                        "ALTERNATIVED VARCHAR(128) NOT NULL," +
-                                        "SOLUTION CHAR(1) NOT NULL" +
+                                        "QuestionId integer PRIMARY KEY AUTOINCREMENT," +
+                                        "Question varchar(512) NOT NULL UNIQUE," +
+                                        "AlternativeA varchar(128) NOT NULL," +
+                                        "AlternativeB varchar(128) NOT NULL," +
+                                        "AlternativeC varchar(128) NOT NULL," +
+                                        "AlternativeD varchar(128) NOT NULL," +
+                                        "Solution CHAR(1) NOT NULL," +
+                                        "Category int," +
+                                        "FOREIGN KEY(Category) REFERENCES Trivias(TriviaId)" +
                                         ")";
 
             using (var connection = new SQLiteConnection(dbCon))
@@ -55,12 +57,12 @@ namespace TriviaLibrary
             {
                 using (var command = new SQLiteCommand(con))
                 {
-                    string insertTriviaQuery = "INSERT INTO Trivias (NAME) VALUES (@name)";
+                    string insertTriviaQuery = "INSERT INTO Trivias (TriviaName) VALUES (@name)";
                     // TODO - Create the questionlist table here
                     con.Open();
 
                     command.CommandText = insertTriviaQuery;
-                    command.Parameters.AddWithValue("name", collectionName);
+                    command.Parameters.AddWithValue("NAME", collectionName);
                     command.ExecuteNonQuery();
                     // TODO - Add exception handling (e.g. for non-unique name)
                 }
@@ -72,7 +74,7 @@ namespace TriviaLibrary
 
             List<TriviaModel> TriviaList = new List<TriviaModel>();
 
-            string getTriviasQuery = "SELECT NAME from Trivias";
+            string getTriviasQuery = "SELECT TriviaName from Trivias";
 
             using (var con = new SQLiteConnection(dbCon))
             {
@@ -92,10 +94,35 @@ namespace TriviaLibrary
 
             return TriviaList;
          }
+
+        public static int GetTriviaId(string collectionName)
+        {
+            string getTriviaIdQuery = "SELECT TriviaId FROM Trivias " +
+                                        "WHERE TriviaName = @name";
+
+
+            using (var con = new SQLiteConnection(dbCon))
+            {
+                using(var command = new SQLiteCommand(con)) {
+                    command.CommandText = getTriviaIdQuery;
+                    command.Parameters.AddWithValue("name", collectionName);
+
+                    con.Open();
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        return reader.GetInt32(0);
+                    }
+                }
+            }
+
+        }
+
         public static void DeleteTrivia(string name)
         {
-            string deleteTriviaQuery = "DELETE FROM Trivias WHERE NAME = @name";
-
+            string deleteTriviaQuery = "DELETE FROM Trivias WHERE TriviaName = @name";
+            // TODO - Delete all questions associated with the deleted Trivia?
             using (var con = new SQLiteConnection(dbCon))
             {
                 using (var command = new SQLiteCommand(deleteTriviaQuery, con))
@@ -123,13 +150,14 @@ namespace TriviaLibrary
 
         public static void AddQuestion(string collectionName, QuestionModel question)
         {
+            string insertQuestionQuery = "INSERT INTO Questions " +
+                                            "(QUESTION, ALTERNATIVEA, ALTERNATIVEB, ALTERNATIVEC, ALTERNATIVED, SOLUTION, CATEGORY)" +
+                                            "VALUES (@question, @altA, @altB, @altC, @altD, @sol, @category)";
+
             using (var con = new SQLiteConnection(dbCon))
             {
-                using (var command = new SQLiteCommand(con))
+                using (var command = new SQLiteCommand(insertQuestionQuery, con))
                 {
-                    string insertQuestionQuery = "INSERT INTO Questions " +
-                                                "(QUESTION, ALTERNATIVEA, ALTERNATIVEB, ALTERNATIVEC, ALTERNATIVED, SOLUTION)" +
-                                                "VALUES (@question, @altA, @altB, @altC, @altD, @sol)";
 
                     command.Parameters.AddWithValue("@question", question.Question);
                     command.Parameters.AddWithValue("@altA", question.AlternativeA);
@@ -137,13 +165,10 @@ namespace TriviaLibrary
                     command.Parameters.AddWithValue("@altC", question.AlternativeC);
                     command.Parameters.AddWithValue("@altD", question.AlternativeD);
                     command.Parameters.AddWithValue("@sol", question.Solution);
+                    command.Parameters.AddWithValue("@category", GetTriviaId(collectionName));
                     // TODO - remove all this mess and bind QuestionModel question to a dict and use a separate function for the query? see https://riptutorial.com/csharp/example/17513/creating-simple-crud-using-sqlite-in-csharp
-                    //TODO - implement either a FK in the Questions table or a separate table for which trivia(s) a question belongs to
 
                     con.Open();
-
-                    command.CommandText = insertQuestionQuery;
-                    //command.Parameters.AddWithValue("name", collectionName);
                     command.ExecuteNonQuery();
                 }
             }
