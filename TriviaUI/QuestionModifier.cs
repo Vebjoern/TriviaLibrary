@@ -14,7 +14,7 @@ namespace TriviaUI
     public partial class QuestionModifier : Form
     {
         public string TriviaName { get; set; }
-        readonly char[] solutionList = { 'A', 'B', 'C', 'D' };
+        private readonly char[] solutionList = { 'A', 'B', 'C', 'D' };
         
 
         public QuestionModifier(string collectionName)
@@ -37,6 +37,10 @@ namespace TriviaUI
                 QuestionModel question = new QuestionModel(questionTextBox.Text, alternativeATextBox.Text, alternativeBTextBox.Text, alternativeCTextBox.Text, alternativeDTextBox.Text, solutionComboBox.Text);
 
                 SQLiteController.AddQuestion(TriviaName, question);
+                TriviaModifier editTrivia = new TriviaModifier(TriviaName);
+                editTrivia.Show();
+                this.Close();
+                // TODO - Find a better way of handling flow between forms
             }
 
         }

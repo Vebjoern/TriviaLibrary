@@ -29,6 +29,7 @@ namespace TriviaUI
         {
             QuestionModifier questionModifier = new QuestionModifier(TriviaName);
             questionModifier.Show();
+            this.Close();
         }
     }
 }

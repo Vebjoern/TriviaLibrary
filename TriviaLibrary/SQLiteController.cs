@@ -54,8 +54,8 @@ namespace TriviaLibrary
 
         public static List<QuestionModel> GetQuestionsFromTrivia(int triviaId)
         {
-            string fetchQuestionsFromTrivia = "SELECT Question, AlternativeA, AlternativeB, AlternativeC, AlternativeD, Solution" +
-                " FROM Questions WHERE Category = @TriviaId";
+            string fetchQuestionsFromTrivia = "SELECT Question, AlternativeA, AlternativeB, AlternativeC, AlternativeD, Solution " +
+                "FROM Questions WHERE Category = @TriviaId";
             List<QuestionModel> QuestionList = new List<QuestionModel>();
 
             using (var connection = new SQLiteConnection(dbCon))
